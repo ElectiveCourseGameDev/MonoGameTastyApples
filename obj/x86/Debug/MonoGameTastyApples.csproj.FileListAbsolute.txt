@@ -11,3 +11,16 @@ c:\users\ebbe vang\documents\visual studio 2013\Projects\MonoGameTastyApples\Mon
 C:\Users\Ebbe Vang\documents\visual studio 2013\Projects\MonoGameTastyApples\MonoGameTastyApples\bin\WindowsGL\Debug\Content\TastyApplesSpritesheet.png
 C:\Users\Ebbe Vang\Documents\Visual Studio 2013\Projects\MonoGameTastyApples\MonoGameTastyApples\bin\WindowsGL\Debug\Content\MonoLog.xnb
 C:\Users\Ebbe Vang\Documents\Visual Studio 2013\Projects\MonoGameTastyApples\MonoGameTastyApples\bin\WindowsGL\Debug\Content\handwriting64.xnb
+C:\Users\ebva.RHS\Documents\Visual Studio 2013\Projects\monoGameTastyApples\obj\x86\Debug\MonoGameTastyApples.exe
+C:\Users\ebva.RHS\Documents\Visual Studio 2013\Projects\monoGameTastyApples\obj\x86\Debug\MonoGameTastyApples.pdb
+C:\Users\ebva.RHS\Documents\Visual Studio 2013\Projects\monoGameTastyApples\bin\WindowsGL\Debug\Content\MonoLog.xnb
+C:\Users\ebva.RHS\Documents\Visual Studio 2013\Projects\monoGameTastyApples\bin\WindowsGL\Debug\Content\handwriting64.xnb
+C:\Users\ebva.RHS\Documents\Visual Studio 2013\Projects\monoGameTastyApples\bin\WindowsGL\Debug\SDL.dll
+C:\Users\ebva.RHS\Documents\Visual Studio 2013\Projects\monoGameTastyApples\bin\WindowsGL\Debug\Content\TastyApplesSpritesheet.png
+C:\Users\ebva.RHS\Documents\Visual Studio 2013\Projects\monoGameTastyApples\bin\WindowsGL\Debug\MonoGameTastyApples.exe
+C:\Users\ebva.RHS\Documents\Visual Studio 2013\Projects\monoGameTastyApples\bin\WindowsGL\Debug\MonoGameTastyApples.pdb
+C:\Users\ebva.RHS\Documents\Visual Studio 2013\Projects\monoGameTastyApples\bin\WindowsGL\Debug\Lidgren.Network.dll
+C:\Users\ebva.RHS\Documents\Visual Studio 2013\Projects\monoGameTastyApples\bin\WindowsGL\Debug\MonoGame.Framework.dll
+C:\Users\ebva.RHS\Documents\Visual Studio 2013\Projects\monoGameTastyApples\bin\WindowsGL\Debug\OpenTK.dll
+C:\Users\ebva.RHS\Documents\Visual Studio 2013\Projects\monoGameTastyApples\bin\WindowsGL\Debug\Tao.Sdl.dll
+C:\Users\ebva.RHS\Documents\Visual Studio 2013\Projects\monoGameTastyApples\obj\x86\Debug\MonoGameTastyApples.csprojResolveAssemblyReference.cache
