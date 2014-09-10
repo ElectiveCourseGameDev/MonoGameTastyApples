@@ -18,14 +18,23 @@ namespace MonoGameTastyApples
     /// </summary>
     public class TastyApplesGame : GameHost
     {
-        GraphicsDeviceManager _graphics;
-        SpriteBatch _spriteBatch;
+        private GraphicsDeviceManager _graphics;
+        private SpriteBatch _spriteBatch;
 
         private Texture2D _spritesheet;
         private SpriteFont _font;
         private Worm _worm;
         private SpriteFont _fontGameOver;
 
+        private Texture2D _intro;
+        private SpriteObject introGraphic;
+
+        private TextObject gameover;
+
+        private GameState gameState;
+        private double _gameOverTime;
+
+        private enum GameState { INTRO, GAME, GAMEOVER};
 
         public TastyApplesGame()
             : base()
@@ -45,7 +54,9 @@ namespace MonoGameTastyApples
             // TODO: Add your initialization logic here
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
-          
+            
+            gameState = GameState.INTRO;
+
             base.Initialize();
         }
 
@@ -82,6 +93,10 @@ namespace MonoGameTastyApples
 
             BenchmarkObject benchmark = new BenchmarkObject(this, _font, new Vector2(10,10), Color.Black );
             GameObjects.Add(benchmark);
+
+            _intro = Content.Load<Texture2D>("intro.png");
+            introGraphic = new SpriteObject(this, new Vector2(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width/2, GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height/2), _intro);
+            introGraphic.Origin = new Vector2(introGraphic.BoundingBox.Width/2, introGraphic.BoundingBox.Height/2);
         }
 
         private void AddGrass()
@@ -107,10 +122,34 @@ namespace MonoGameTastyApples
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
+            Keyboard.GetState().IsKeyDown(Keys.Escape))
+            Exit();
 
-            for (int i = 0; i < GameObjects.Count-1; i++)
+            switch (gameState)
+            {
+                case GameState.INTRO:
+                    if (GamePad.GetState(PlayerIndex.One).Buttons.Start == ButtonState.Pressed)
+                    {
+                        gameState = GameState.GAME;
+                        GameObjects.Add(_worm);
+                    }
+                    break;
+                case GameState.GAMEOVER:
+                case GameState.GAME:
+                    GameUpdate(gameTime);
+                    break;
+            }
+            base.Update(gameTime);
+        }
+
+        private void GameUpdate(GameTime gameTime)
+        {
+            
+            gameover = new TextObject(this, _fontGameOver,
+                new Vector2(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width/2,
+                    GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height/2), "Game Over");
+            for (int i = 0; i < GameObjects.Count - 1; i++)
             {
                 GameObjects[i].Update(gameTime);
 
@@ -129,15 +168,12 @@ namespace MonoGameTastyApples
                     if (b.BoundingBox.Intersects(_worm.BoundingBox))
                     {
                         GameObjects.Remove(_worm);
-                        TextObject gameover =
-                            new TextObject(this, _fontGameOver,
-                                new Vector2(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width/2,
-                                    GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height/2), "Game Over");
                         gameover.SpriteColor = Color.RoyalBlue;
                         GameObjects.Add(gameover);
-
+                        gameState = GameState.GAMEOVER;
                     }
                 }
+                
             }
 
             //spawn apples
@@ -159,7 +195,20 @@ namespace MonoGameTastyApples
                 b.PositionY = GameHelper.RandomNext(GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height);
                 GameObjects.Add(b);
             }
-            base.Update(gameTime);
+
+            if (gameState == GameState.GAMEOVER)
+            {
+                if (_gameOverTime == 0)
+                {
+                    _gameOverTime = gameTime.TotalGameTime.TotalSeconds;
+                }
+                if (_gameOverTime != 0 && _gameOverTime + 3 <= gameTime.TotalGameTime.TotalSeconds)
+                {
+                    gameState = GameState.INTRO;
+                    _gameOverTime = 0;
+                    GameObjects.Remove(gameover);
+                }
+            }
         }
 
         /// <summary>
@@ -171,10 +220,21 @@ namespace MonoGameTastyApples
             GraphicsDevice.Clear(Color.White);
 
             _spriteBatch.Begin();
-            foreach (SpriteObject gameObject in GameObjects)
+            switch (gameState)
             {
-                gameObject.Draw(gameTime, _spriteBatch);
+                case GameState.INTRO:
+                    introGraphic.Draw(gameTime, _spriteBatch);
+                    break;
+
+                case GameState.GAMEOVER:
+                case GameState.GAME:
+                    foreach (SpriteObject gameObject in GameObjects)
+                    {
+                        gameObject.Draw(gameTime, _spriteBatch);
+                    }
+                    break;
             }
+            
             _spriteBatch.End();
             
 

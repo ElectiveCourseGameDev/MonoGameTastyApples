@@ -45,7 +45,7 @@ namespace MonoGameTastyApples
 
         public override void Update(GameTime gameTime)
         {
-            PositionX--;
+            PositionX-=3;
             if (PositionX+100 < 0) PositionX += GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width+100;
         }
 

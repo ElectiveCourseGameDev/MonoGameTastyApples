@@ -50,9 +50,9 @@ namespace MonoGameTastyApples
             }
 
             //react on gamepad
-            PositionY -= GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y*3;
+            PositionY -= GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y*7;
 
-            PositionX += GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X * 3-1;
+            PositionX += GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X * 7-1;
 
 
         }

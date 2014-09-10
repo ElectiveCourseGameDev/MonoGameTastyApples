@@ -25,7 +25,7 @@ namespace MonoGameTastyApples
 
         public override void Update(GameTime gameTime)
         {
-            PositionX -= 3;
+            PositionX -= 10;
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)

@@ -24,3 +24,4 @@ C:\Users\ebva.RHS\Documents\Visual Studio 2013\Projects\monoGameTastyApples\bin\
 C:\Users\ebva.RHS\Documents\Visual Studio 2013\Projects\monoGameTastyApples\bin\WindowsGL\Debug\OpenTK.dll
 C:\Users\ebva.RHS\Documents\Visual Studio 2013\Projects\monoGameTastyApples\bin\WindowsGL\Debug\Tao.Sdl.dll
 C:\Users\ebva.RHS\Documents\Visual Studio 2013\Projects\monoGameTastyApples\obj\x86\Debug\MonoGameTastyApples.csprojResolveAssemblyReference.cache
+C:\Users\ebva.RHS\Documents\Visual Studio 2013\Projects\monoGameTastyApples\bin\WindowsGL\Debug\Content\intro.png
